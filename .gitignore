@@ -1,0 +1,102 @@
+# --- Secrets & credentials (never commit) ---
+.env
+.env.*
+!.env.example
+*.local
+firebase-service-account.json
+**/service-account*.json
+**/credentials.json
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase_options.dart
+*.pem
+*.p12
+*.key
+!**/packages/**/*.key
+
+# --- Node / Vercel ---
+node_modules/
+.vercel/
+.vercelignore.bak
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled TS beside sources (Vercel runs api/**/*.ts)
+api/**/*.js
+server/**/*.js
+!server/update_xmls.js
+!server/test-*.js
+
+# --- Firebase ---
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+ui-debug.log
+functions/node_modules/
+functions/lib/
+functions/.env
+functions/.runtimeconfig.json
+
+# --- Flutter / Dart ---
+app/.dart_tool/
+app/.packages
+app/.pub-cache/
+app/.pub/
+app/build/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/**/doc/api/
+app/**/ios/Flutter/.last_build_id
+app/**/*.symbols
+app/**/*.map.json
+app/android/app/debug/
+app/android/app/profile/
+app/android/app/release/
+app/android/.gradle/
+app/android/local.properties
+app/android/**/GeneratedPluginRegistrant.*
+app/ios/Pods/
+app/ios/.symlinks/
+app/ios/Flutter/Flutter.framework
+app/ios/Flutter/Flutter.podspec
+app/ios/Flutter/Generated.xcconfig
+app/ios/Flutter/ephemeral/
+app/macos/Flutter/ephemeral/
+app/linux/flutter/ephemeral/
+app/windows/flutter/ephemeral/
+
+# --- Go agent ---
+agent/*.exe
+agent/vendor/
+agent/*.test
+agent/bin/
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
+
+# --- Logs & temp ---
+*.log
+tmp/
+temp/
+*.tmp
+coverage/
+.nyc_output/
+
+# --- Cursor / local tooling ---
+.cursor/
+agent-tools/
+assets/
+*.canvas.tsx
+
+# --- Test / scratch scripts with possible secrets ---
+# keep source tests; ignore local dumps
+*.dump
+*.bak

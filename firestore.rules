@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    match /parties/{partyId} {
+      allow read, write: if isOwner(resource.data.user_id)
+        || (request.resource != null && isOwner(request.resource.data.user_id));
+      allow create: if isOwner(request.resource.data.user_id);
+    }
+
+    match /items/{itemId} {
+      allow read, write: if isOwner(resource.data.user_id)
+        || (request.resource != null && isOwner(request.resource.data.user_id));
+      allow create: if isOwner(request.resource.data.user_id);
+    }
+
+    match /invoices/{invoiceId} {
+      allow read, write: if isOwner(resource.data.user_id)
+        || (request.resource != null && isOwner(request.resource.data.user_id));
+      allow create: if isOwner(request.resource.data.user_id);
+    }
+
+    match /sync_queue/{queueId} {
+      allow read: if isOwner(resource.data.user_id);
+      allow write: if false;
+    }
+
+    match /agent_devices/{deviceId} {
+      allow read: if isOwner(resource.data.user_id);
+      allow write: if false;
+    }
+
+    match /pairing_codes/{codeId} {
+      allow read, write: if request.auth != null
+        && (resource == null || resource.data.user_id == request.auth.uid);
+    }
+  }
+}

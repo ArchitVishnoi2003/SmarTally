@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": ["es2017"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": ".",
+    "rootDir": ".",
+    "moduleResolution": "node"
+  },
+  "include": ["api/**/*.ts", "server/**/*.ts"],
+  "exclude": ["node_modules", "app", "agent", "functions"]
+}

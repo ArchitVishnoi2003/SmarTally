@@ -1,0 +1,7 @@
+app/
+functions/
+agent/
+node_modules/
+.git/
+*.md
+!DEPLOYMENT_REPORT.md
